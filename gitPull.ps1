@@ -1,3 +1,3 @@
-﻿cd .\Website\master
-git pull https://github.com/miftaju/websida.git master
+﻿cd
+git pull <link> master
 Pause
