@@ -1,4 +1,7 @@
 $option = 'New', 'load', 'Help', 'Setup'
+Import-Module .\gitPull.ps1
+Import-Module .\gitPush.ps1
+Import-Module .\gitSetup.ps1
 function scriptHelp
 {
     'Here is the task you can achieve from this script, literally nothing'
@@ -38,12 +41,12 @@ function loadRepo
             $task = Read-Host 'Would you like to push or pull'
             if ($task -eq 'pull')
             {
-                gitPull -dir $hashValues.dir -url $hashValues.gitUrl -branch $hashValues.branchName
+                Get-Pull -dir $hashValues.dir -url $hashValues.gitUrl -branch $hashValues.branchName
                 break
             }
             if ($task -eq 'push')
             {
-                gitPush -dir $hashValues.dir -url $hashValues.gitUrl -branch $hashValues.branchName
+                Get-Push -dir $hashValues.dir -url $hashValues.gitUrl -branch $hashValues.branchName
                 break
             }
             'command not found!'
@@ -57,6 +60,7 @@ function loadRepo
 
 while($true)
 {
+    $option
     $choice = Read-Host 'What would you like to do?'
     if($choice -in $option)
     {
